@@ -1,0 +1,45 @@
+no_of_repeats = 999  # The higher this number, the closer the result is to π, but also more computing power is consumed
+test = 1
+add = False
+pi = 1
+
+
+def add_two():
+    global test
+    test += 2
+    return test
+
+
+def pi_ig():
+    global pi
+    global test
+    if add:
+        add_pi()
+    elif add is False:
+        sub_pi()
+
+    return pi
+
+
+def add_pi():
+    global pi
+    global add
+    add_two()
+    pi += 1 / test
+    add = False
+    return pi
+
+
+def sub_pi():
+    global pi
+    global add
+    add_two()
+    pi -= 1 / test
+    add = True
+    return pi
+
+
+for i in range(no_of_repeats):
+    pi_ig()
+
+print((1 - pi))
